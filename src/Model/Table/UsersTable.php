@@ -7,8 +7,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator; //form validation... 
-//use Authentication\PasswordHasher\DefaultPasswordHasher; // Add this line
-use Cake\Auth\DefaultPasswordHasher;
+ 
 
 /**
  * Users Model
@@ -100,13 +99,13 @@ class UsersTable extends Table
     }
 
 
-    protected function _setPassword($password)
-    {
-       // echo $password; exit; 
-        if (strlen($password) > 0) {
-          return (new DefaultPasswordHasher)->hash($password);
-        }
-    }
+    // protected function _setPassword($password)
+    // {
+    //    // echo $password; exit; 
+    //     if (strlen($password) > 0) {
+    //       return (new DefaultPasswordHasher)->hash($password);
+    //     }
+    // }
 
 
     /**
