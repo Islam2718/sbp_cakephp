@@ -6,7 +6,9 @@ namespace App\Model\Table;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
-use Cake\Validation\Validator;
+use Cake\Validation\Validator; //form validation... 
+//use Authentication\PasswordHasher\DefaultPasswordHasher; // Add this line
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Users Model
@@ -60,17 +62,17 @@ class UsersTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-        $validator
-            ->scalar('first_name')
-            ->maxLength('first_name', 255)
-            ->requirePresence('first_name', 'create')
-            ->notEmptyString('first_name');
+        // $validator
+        //     ->scalar('first_name')
+        //     ->maxLength('first_name', 255)
+        //     ->requirePresence('first_name', 'create')
+        //     ->notEmptyString('first_name');
 
-        $validator
-            ->scalar('last_name')
-            ->maxLength('last_name', 255)
-            ->requirePresence('last_name', 'create')
-            ->notEmptyString('last_name');
+        // $validator
+        //     ->scalar('last_name')
+        //     ->maxLength('last_name', 255)
+        //     ->requirePresence('last_name', 'create')
+        //     ->notEmptyString('last_name');
 
         $validator
             ->email('email')
@@ -96,6 +98,16 @@ class UsersTable extends Table
 
         return $validator;
     }
+
+
+    protected function _setPassword($password)
+    {
+       // echo $password; exit; 
+        if (strlen($password) > 0) {
+          return (new DefaultPasswordHasher)->hash($password);
+        }
+    }
+
 
     /**
      * Returns a rules checker object that will be used for validating

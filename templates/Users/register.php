@@ -1,6 +1,12 @@
 <div class="container">
     <div class="col-6 mx-auto mt-5 mb-5 p-4 card">
-        <form>
+        <!-- <form action="/users/register" method="post"> -->
+            <?php //FORM START.. 
+                echo $this->Form->create(null, [
+                    'url' => '/users/register/',
+                    'type' => 'post'
+                ]);
+            ?> 
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
                 <input type="email" name="email" class="form-control">
