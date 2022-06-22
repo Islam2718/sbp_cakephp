@@ -21,10 +21,8 @@
                 <label for="confirm_password" class="form-label">Password</label>
                 <input type="password" name="confirm_password" class="form-control"">
             </div>
-
-
             <button type="submit" class="btn btn-primary">Register</button>
-            Already have an account <?= $this->Html->link("Login Here", ['action' => 'login']) ?>
+            Already have an account? <?= $this->Html->link("Login Here", ['action' => 'login']) ?>
         </form>
     </div>
 </div>
